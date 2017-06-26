@@ -27,10 +27,13 @@
   },
   "devDependencies": {
     "eslint-config-airbnb": "^15.0.1",
+    "flow-bin": "^0.48.0",
     "react-scripts": "1.0.7"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm run flow && react-scripts start",
+    "preview": "NODE_ENV=\"production\" npm start",
+    "flow": "flow",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
