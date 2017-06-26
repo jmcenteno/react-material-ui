@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 64px 0 0;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+input:-webkit-autofill, 
+textarea:-webkit-autofill, 
+select:-webkit-autofill {
+  background: transparent !important;
+}
+
+@font-face {
+  font-family: 'material-design-icons';
+  src:  url('./assets/fonts/material-design-icons/material-design-icons.eot?peg86');
+  src:  url('./assets/fonts/material-design-icons/material-design-icons.eot?peg86#iefix') format('embedded-opentype'),
+    url('./assets/fonts/material-design-icons/material-design-icons.ttf?peg86') format('truetype'),
+    url('./assets/fonts/material-design-icons/material-design-icons.woff?peg86') format('woff'),
+    url('./assets/fonts/material-design-icons/material-design-icons.svg?peg86#material-design-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="material-icons"], [class*=" material-icons"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'material-design-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.material-icons.add_circle:before {
+  content: "\e147";
+}
+.material-icons.remove_circle:before {
+  content: "\e15c";
+}
+.material-icons.star:before {
+  content: "\e838";
+}
+.material-icons.home:before {
+  content: "\e88a";
+}
+.material-icons.shopping_cart:before {
+  content: "\e8cc";
+}
+.material-icons.menu:before {
+  content: "\e5d2";
+}
+.material-icons.star_border:before {
+  content: "\e83a";
+}
+.material-icons.star_half:before {
+  content: "\e839";
+}
+
