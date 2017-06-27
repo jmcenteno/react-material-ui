@@ -32,10 +32,10 @@ export function getReviews(product) {
   };
 }
 
-export function createReview(review) {
+export function createReview(productKey, review) {
   return function (dispatch) {
 
-    return ReviewsService.createReview(review)
+    return ReviewsService.createReview(productKey, review)
       .then(data => dispatch(handleResponse(REVIEWS_CREATE_SUCCESS, data)))
       .catch(error => dispatch(handleResponse(REVIEWS_CREATE_ERROR, error)));
 

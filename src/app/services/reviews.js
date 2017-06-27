@@ -44,10 +44,10 @@ class ReviewsService {
     });
   }
 
-  createReview(review) {
+  createReview(productKey, review) {
     return new Promise((resolve, reject) => {
 
-      const ref = firebase.database().ref(`reviews/${ review.product }`);
+      const ref = firebase.database().ref(`products/${ productKey }/reviews`);
 
       ref.push(review)
         .then(() => {
