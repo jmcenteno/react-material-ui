@@ -139,10 +139,8 @@ export class ProductDetails extends Component {
 
       tabs = (
         <div>
-          <Tabs product={ product } />
-          <br />
-          <Divider />
-          <br />
+          <Tabs product={ product } style={ { marginBottom: 32 } } />
+          <Divider style={ { marginBottom: 32 } } />
         </div>
       );
 

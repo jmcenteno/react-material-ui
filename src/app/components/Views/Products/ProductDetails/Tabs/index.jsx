@@ -9,7 +9,12 @@ import styles from './styles';
 export default class ProductTabs extends Component {
 
   static propTypes = {
-    product: PropTypes.object.isRequired
+    product: PropTypes.object.isRequired,
+    style: PropTypes.object
+  }
+
+  static defaultProps = {
+    styles: {}
   }
 
   constructor() {
@@ -26,12 +31,13 @@ export default class ProductTabs extends Component {
 
   render() {
 
-    const { product } = this.props;
+    const { product, style } = this.props;
 
     return (
       <Tabs
         tabItemContainerStyle={ styles.tabItemContainer }
-        inkBarStyle={ styles.tabInkBarStyle }>
+        inkBarStyle={ styles.tabInkBarStyle }
+        style={ style }>
         <Tab
           label='Description'
           style={ this.state.activeTab === 0 ? styles.tabRoot.active : styles.tabRoot.default }
