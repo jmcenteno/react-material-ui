@@ -14,6 +14,14 @@ class Utils {
 
   }
 
+  makeArray(obj) {
+
+    return Object.keys(obj).map(key => {
+      return Object.assign({}, obj[key], { key });
+    });
+
+  }
+
   calculateRatings(reviews) {
 
     const total = reviews.map((item) => item.stars).reduce((a, b) => a + b, 0);
