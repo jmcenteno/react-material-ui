@@ -40,11 +40,10 @@ export class ReviewForm extends Component {
     const { dispatch, product } = this.props;
     const { values } = this.state;
     const review = Object.assign({}, values, {
-      product: product.get('key'),
       created: new Date()
     });
 
-    dispatch(createReview(review));
+    dispatch(createReview(product.get('key'), review));
 
     this.setState({
       values: {
