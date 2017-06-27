@@ -13,7 +13,7 @@ function Reviews({ product, ...rest }) {
       medium={
         <Row>
           <Column span={ 12 }>
-            <ReviewList data={ product.get('reviews') } />
+            <ReviewList reviews={ product.get('reviews') } />
           </Column>
           <Column span={ 12 }>
             <AddReviewForm product={ product } />
@@ -23,7 +23,7 @@ function Reviews({ product, ...rest }) {
       large={
         <Row>
           <Column span={ 7 }>
-            <ReviewList data={ product.get('reviews') } />
+            <ReviewList reviews={ product.get('reviews') } />
           </Column>
           <Column span={ 5 }>
             <AddReviewForm product={ product } />
