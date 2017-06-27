@@ -7,7 +7,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
 
 import { getProductDetails } from '../../../../actions/productDetails';
-import { getReviews } from '../../../../actions/reviews';
 import { addCartItem } from '../../../../actions/cart';
 import { PageContainer } from '../../../Global/Page';
 import ResponsiveLayout from '../../../Global/Responsive';
@@ -26,7 +25,6 @@ export class ProductDetails extends Component {
   static propTypes = {
     product: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
-    reviews: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
     match: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired
@@ -50,7 +48,6 @@ export class ProductDetails extends Component {
     const { dispatch, match } = this.props;
 
     dispatch(getProductDetails(match.params.category, match.params.id));
-    dispatch(getReviews(match.params.id));
 
   }
 
@@ -66,7 +63,6 @@ export class ProductDetails extends Component {
         newProps.match.params.id !== match.params.id) {
 
       dispatch(getProductDetails(newProps.match.params.category, newProps.match.params.id));
-      dispatch(getReviews(match.params.id));
 
     }
 
@@ -83,7 +79,8 @@ export class ProductDetails extends Component {
 
   render() {
 
-    const { product, loading, reviews, history } = this.props;
+    const { product, loading, history } = this.props;
+    const reviews = Utils.makeArray((product.get('reviews') || List()).toJS());
 
     let title = null;
     let productImages = null;
@@ -100,7 +97,7 @@ export class ProductDetails extends Component {
             <div>
               { `Price: ${ Utils.formatCurrency(product.get('price')) }` }
               <StarRatings
-                stars={ Utils.calculateRatings(reviews.toJS()) }
+                stars={ Utils.calculateRatings(reviews) }
                 style={ styles.stars }
               />
               <span>{ `${ reviews.size || 0 } reviews` }</span>
@@ -212,6 +209,5 @@ export class ProductDetails extends Component {
 export default connect(state => ({
   product: state.productDetails.get('data'),
   loading: state.productDetails.get('loading'),
-  error: state.productDetails.get('error'),
-  reviews: state.reviews.get('data')
+  error: state.productDetails.get('error')
 }))(ProductDetails);
