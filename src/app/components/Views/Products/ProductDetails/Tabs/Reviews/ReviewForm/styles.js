@@ -4,6 +4,10 @@ const styles = {
   },
   stars: {
     marginLeft: -16
+  },
+  modal: {
+    width: '100%',
+    maxWidth: 400
   }
 };
 
