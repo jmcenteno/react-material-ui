@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
 import Subheader from 'material-ui/Subheader';
+import RemoveCircleIcon from 'material-ui/svg-icons/content/remove-circle';
+import AddCircleIcon from 'material-ui/svg-icons/content/add-circle';
 
 import styles from './styles';
 
@@ -13,7 +15,8 @@ export default class NumericStepper extends Component {
     min: PropTypes.number,
     max: PropTypes.number,
     label: PropTypes.string,
-    style: PropTypes.object
+    style: PropTypes.object,
+    onChange: PropTypes.func
   }
 
   static defaultProps = {
@@ -21,7 +24,8 @@ export default class NumericStepper extends Component {
     min: 1,
     max: 10,
     label: 'Qty',
-    style: null
+    style: null,
+    onChange: () => {}
   };
 
   constructor(props) {
@@ -39,21 +43,21 @@ export default class NumericStepper extends Component {
 
   addQty() {
 
-    const qty = this.state.qty + 1;
+    let qty = this.state.qty + 1;
+    qty = (qty > this.props.max ? this.props.max : qty);
 
-    this.setState({
-      qty: (qty > this.props.max ? this.props.max : qty)
-    });
+    this.setState({ qty });
+    this.props.onChange(qty);
 
   }
 
   removeQty() {
 
-    const qty = this.state.qty - 1;
+    let qty = this.state.qty - 1;
+    qty = (qty < this.props.min ? this.props.min : qty);
 
-    this.setState({
-      qty: (qty < this.props.min ? this.props.min : qty)
-    });
+    this.setState({ qty });
+    this.props.onChange(qty);
 
   }
 
@@ -66,7 +70,7 @@ export default class NumericStepper extends Component {
         <Subheader style={ styles.label }>{ label }</Subheader>
         <div>
           <IconButton onTouchTap={ this.removeQty }>
-            <FontIcon className='material-icons remove_circle' />
+            <RemoveCircleIcon />
           </IconButton>
         </div>
         <div style={ styles.qty }>
@@ -74,7 +78,7 @@ export default class NumericStepper extends Component {
         </div>
         <div>
           <IconButton onTouchTap={ this.addQty }>
-            <FontIcon className='material-icons add_circle' />
+            <AddCircleIcon />
           </IconButton>
         </div>
       </div>
