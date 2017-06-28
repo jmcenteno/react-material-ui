@@ -165,8 +165,6 @@ export class ProductList extends Component {
       </SelectField>
     );
 
-    console.log(this.state.products);
-
     return (
       <PageContainer>
         {
