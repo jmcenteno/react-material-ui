@@ -100,7 +100,7 @@ export class ProductDetails extends Component {
                 stars={ Utils.calculateRatings(reviews) }
                 style={ styles.stars }
               />
-              <span>{ `${ reviews.size || 0 } reviews` }</span>
+              <span>{ `${ reviews.length || 0 } reviews` }</span>
             </div>
           }
           titleStyle={styles.title}
