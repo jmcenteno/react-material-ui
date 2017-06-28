@@ -75,7 +75,7 @@ export class Cart extends Component {
                   items.map((item, i) => {
 
                     const product = item.get('product');
-                    const path = `/products/${ product.get('category') }/${ product.get('id') }`;
+                    const path = `/products/${ product.get('category') }/${ product.get('slug') }`;
                     const price = Utils.formatCurrency(product.get('price'));
                     const removeButton = (
                       <IconButton onTouchTap={ (event) => this.removeCartItem(event, i) }>
