@@ -8,6 +8,7 @@ import { getCategories } from '../actions/categories';
 import HomePage from './Views/Home';
 import About from './Views/About';
 import { ProductList, ProductDetails } from './Views/Products';
+import CartPage from './Views/Cart';
 import NotFound from './Views/NotFound';
 
 class App extends Component {
@@ -37,6 +38,7 @@ class App extends Component {
           <Route exact path='/about' component={ About } />
           <Route exact path='/products/:category' component={ ProductList } />
           <Route exact path='/products/:category/:id' component={ ProductDetails } />
+          <Route exact path='/cart' component={ CartPage } />
 
           <Route exact path='/404' component={ NotFound } />
           <Route path='*' component={ NotFound } />
