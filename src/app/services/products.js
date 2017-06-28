@@ -70,7 +70,8 @@ class ProductsService {
       })
       .map(item => {
         return Object.assign({}, item, {
-          price: (item.price !== 'unknown' ? parseFloat(item.price) : 0)
+          price: (item.price !== 'unknown' ? parseFloat(item.price) : 0),
+          reviews: Utils.makeArray(item.reviews || {})
         });
       });
 
