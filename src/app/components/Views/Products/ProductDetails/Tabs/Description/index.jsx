@@ -5,14 +5,7 @@ import { CardText } from 'material-ui/Card';
 import ResponsiveLayout from '../../../../../Global/Responsive';
 import { Row, Column } from '../../../../../Global/Grid';
 import Specs from './Specs';
-
-const styles = {
-  description: {
-    fontSize: 16,
-    fontWeight: 300,
-    lineHeight: 1.5
-  }
-};
+import styles from './styles';
 
 function DescriptionTab({ product, ...rest }) {
 

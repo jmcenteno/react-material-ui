@@ -3,24 +3,7 @@ import PropTypes from 'prop-types';
 import { CardText } from 'material-ui/Card';
 import Subheader from 'material-ui/Subheader';
 
-const styles = {
-  table: {
-    margin: '0 12px',
-    width: '100%'
-  },
-  td: {
-    padding: 8,
-    boxSizing: 'border-box',
-    verticalAlign: 'top'
-  },
-  value: {
-    textAlign: 'right',
-    textTransform: 'capitalize'
-  },
-  cardText: {
-    padding: 0
-  }
-};
+import styles from './styles';
 
 function Specs({ data, title, ...rest }) {
 
