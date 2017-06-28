@@ -112,14 +112,20 @@ export class Cart extends Component {
                   <CardText style={ styles.footer }>
                     Subtotal: { this.getSubtotal() }
                   </CardText>
+                  <Divider />
+                  <CardText style={ styles.actionButtonsWrapper }>
+                    <FlatButton
+                      label='View Cart'
+                      primary={ true }
+                      onTouchTap={ onRequestChange }
+                      containerElement={ <Link to='/cart' /> }
+                      style={ Object.assign({}, styles.actionButton, { marginRight: 8 }) }
+                    />
+                    <RaisedButton label='Checkout' primary={ true } style={ Object.assign({}, styles.actionButton, { marginLeft: 8 }) } />
+                  </CardText>
                 </div> :
                 null
             }
-            <Divider />
-            <CardText style={ styles.actionButtonsWrapper }>
-              <FlatButton label='View Cart' primary={ true } style={ Object.assign({}, styles.actionButton, { marginRight: 8 }) } />
-              <RaisedButton label='Checkout' primary={ true } style={ Object.assign({}, styles.actionButton, { marginLeft: 8 }) } />
-            </CardText>
           </div>
         </div>
       </Drawer>
