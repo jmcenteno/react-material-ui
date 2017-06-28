@@ -1,13 +1,15 @@
-import { Map } from 'immutable';
+import { Map, List } from 'immutable';
 
 import {
   PRODUCTS_GET_DETAILS_START,
   PRODUCTS_GET_DETAILS_SUCCESS,
-  PRODUCTS_GET_DETAILS_ERROR
+  PRODUCTS_GET_DETAILS_ERROR,
+  PRODUCT_DETAILS_REVIEWS
 } from '../actions/productDetails';
 
 const initialState = Map({
-  data: Map(),
+  product: Map(),
+  reviews: List(),
   error: null,
   loading: false
 });
@@ -16,14 +18,15 @@ const actionsMap = {
 
   [PRODUCTS_GET_DETAILS_START]: (state) => {
     return state.merge({
-      data: Map(),
+      product: Map(),
       loading: true
     });
   },
 
   [PRODUCTS_GET_DETAILS_SUCCESS]: (state, action) => {
     return state.merge({
-      data: action.data,
+      product: action.data,
+      reviews: action.data.reviews || List(),
       error: null,
       loading: false
     });
@@ -31,9 +34,15 @@ const actionsMap = {
 
   [PRODUCTS_GET_DETAILS_ERROR]: (state, action) => {
     return state.merge({
-      data: Map(),
+      product: Map(),
       error: action.data,
       loading: false
+    });
+  },
+
+  [PRODUCT_DETAILS_REVIEWS]: (state, action) => {
+    return state.merge({
+      reviews: action.data
     });
   }
 

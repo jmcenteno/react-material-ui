@@ -20,10 +20,20 @@ import RelatedProducts from './RelatedProducts';
 import StarRatings from '../StarRatings';
 import styles from './styles';
 
+function mapStateToProps(state) {
+  return {
+    product: state.productDetails.get('product'),
+    reviews: state.productDetails.get('reviews'),
+    loading: state.productDetails.get('loading'),
+    error: state.productDetails.get('error')
+  };
+}
+
 export class ProductDetails extends Component {
 
   static propTypes = {
     product: PropTypes.object.isRequired,
+    reviews: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired,
     match: PropTypes.object.isRequired,
@@ -80,7 +90,9 @@ export class ProductDetails extends Component {
   render() {
 
     const { product, loading, history } = this.props;
-    const reviews = Utils.makeArray((product.get('reviews') || List()).toJS());
+    let { reviews } = this.props;
+
+    reviews = Utils.makeArray((reviews || List()).toJS());
 
     let title = null;
     let productImages = null;
@@ -206,8 +218,4 @@ export class ProductDetails extends Component {
 
 }
 
-export default connect(state => ({
-  product: state.productDetails.get('data'),
-  loading: state.productDetails.get('loading'),
-  error: state.productDetails.get('error')
-}))(ProductDetails);
+export default connect(mapStateToProps)(ProductDetails);

@@ -14,7 +14,7 @@ export default class ProductTabs extends Component {
   }
 
   static defaultProps = {
-    styles: {}
+    style: {}
   }
 
   constructor() {
@@ -50,7 +50,7 @@ export default class ProductTabs extends Component {
           style={ this.state.activeTab === 1 ? styles.tabRoot.active : styles.tabRoot.default }
           buttonStyle={ styles.tabButtonStyle }
           onActive={ () => this.setState({ activeTab: 1 }) }>
-          <Reviews product={ product } />
+          <Reviews />
         </Tab>
       </Tabs>
     );

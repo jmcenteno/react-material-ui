@@ -6,9 +6,16 @@ import { CardTitle, CardText, CardActions } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
-import { createReview } from '../../../../../../../actions/reviews';
+import { createReview } from '../../../../../../../actions/productDetails';
 import StarsControl from '../../../../../../Global/Controls/StarRatings';
 import styles from './styles';
+
+function mapStateToProps(state) {
+  return {
+    product: state.productDetails.get('product'),
+    status: state.productDetails.get('reviewForm')
+  };
+}
 
 export class ReviewForm extends Component {
 
@@ -115,6 +122,4 @@ export class ReviewForm extends Component {
 
 }
 
-export default connect(state => ({
-  status: state.productDetails.get('reviewForm')
-}))(ReviewForm);
+export default connect(mapStateToProps)(ReviewForm);

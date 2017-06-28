@@ -5,7 +5,8 @@ import Subheader from 'material-ui/Subheader';
 
 const styles = {
   table: {
-    margin: '0 12px'
+    margin: '0 12px',
+    width: '100%'
   },
   td: {
     padding: 8,
