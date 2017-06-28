@@ -27,7 +27,6 @@ export default class MainMenu extends Component {
 
     return (
       <Drawer open={ open } docked={ false } onRequestChange={ onRequestChange }>
-        <UserInfo />
         <Menu onChange={ onRequestChange }>
           <MenuItem
             value='dashboard'
