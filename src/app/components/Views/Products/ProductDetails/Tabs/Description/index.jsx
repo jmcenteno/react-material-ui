@@ -23,7 +23,9 @@ function DescriptionTab({ product, ...rest }) {
   );
 
   const specs = (
-    <Specs data={ product.get('specs') } />
+    <CardText>
+      <Specs data={ product.get('specs') } />
+    </CardText>
   );
 
   const component = (

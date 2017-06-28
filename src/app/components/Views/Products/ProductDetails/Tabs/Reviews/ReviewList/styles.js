@@ -5,6 +5,10 @@ const styles = {
   comments: {
     paddingTop: 0,
     paddingLeft: 72
+  },
+  divider: {
+    marginTop: 16,
+    marginBottom: 16
   }
 };
 

@@ -1,41 +1,20 @@
 import firebase from 'firebase';
 import _ from 'lodash';
 
+import Utils from './utils';
+
 class ReviewsService {
 
-  getReviews(slug) {
+  getReviews(productKey) {
     return new Promise((resolve, reject) => {
 
-      firebase.database().ref('products').orderByChild('slug').equalTo(slug)
+      firebase.database().ref(`products/${productKey}/reviews`)
         .once('value',
           (productSnapshot) => {
 
-            const keys = Object.keys(productSnapshot.val() || {});
+            const reviews = Utils.makeArray(productSnapshot.val() || {});
 
-            if (keys.length) {
-
-              firebase.database().ref(`reviews/${ keys[0] }`)
-                .once('value',
-                  (reviewsSnapshot) => {
-
-                    const data = reviewsSnapshot.val() || {};
-
-                    const reviews = Object.keys(data).map(key => {
-                      return Object.assign({}, data[key], {
-                        key
-                      });
-                    });
-
-                    resolve(_.sortBy(reviews, ['created']));
-
-                  }
-                );
-
-            } else {
-
-              resolve([]);
-
-            }
+            resolve(_.sortBy(reviews, ['created']).reverse());
 
           },
           (error) => reject(error)
@@ -44,10 +23,10 @@ class ReviewsService {
     });
   }
 
-  createReview(review) {
+  createReview(productKey, review) {
     return new Promise((resolve, reject) => {
 
-      const ref = firebase.database().ref(`reviews/${ review.product }`);
+      const ref = firebase.database().ref(`products/${ productKey }/reviews`);
 
       ref.push(review)
         .then(() => {

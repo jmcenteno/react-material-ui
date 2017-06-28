@@ -7,8 +7,15 @@ import Avatar from 'material-ui/Avatar';
 import Divider from 'material-ui/Divider';
 import moment from 'moment';
 
+import Utils from '../../../../../../../services/utils';
 import StarRatings from '../../../../StarRatings';
 import styles from './styles';
+
+function mapStateToProps(state) {
+  return {
+    reviews: state.productDetails.get('reviews')
+  };
+}
 
 export class ReviewList extends Component {
 
@@ -18,27 +25,29 @@ export class ReviewList extends Component {
 
   render() {
 
-    const { reviews } = this.props;
+    let { reviews } = this.props;
+
+    reviews = Utils.makeArray(reviews ? reviews.toJS() : {});
 
     return (
       <div>
         {
-          reviews.size ?
+          reviews.length ?
             <List>
               {
                 reviews.map((item, i) => (
                   <div key={ `review-${ i + 1 }` }>
-                    { i > 0 ? <Divider inset={ true } /> : null }
+                    { i > 0 ? <Divider inset={ true } style={ styles.divider } /> : null }
                     <ListItem
                       disabled={ true }
                       leftAvatar={ <Avatar>TU</Avatar> }
-                      primaryText={ item.get('title') }
-                      secondaryText={ moment(item.get('created')).format('M/D/YYYY') }
+                      primaryText={ item.title }
+                      secondaryText={ moment(item.created).format('M/D/YYYY') }
                       initiallyOpen={ true }
                     />
                     <CardText style={ styles.comments }>
-                      <StarRatings stars={ item.get('stars') } style={ styles.stars } />
-                      { item.get('comments') }
+                      <StarRatings stars={ item.stars } style={ styles.stars } />
+                      { item.comments }
                     </CardText>
                   </div>
                 ))
@@ -55,6 +64,4 @@ export class ReviewList extends Component {
 
 }
 
-export default connect(state => ({
-  reviews: state.reviews.get('data')
-}))(ReviewList);
+export default connect(mapStateToProps)(ReviewList);
