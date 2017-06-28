@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Paper from 'material-ui/Paper';
 import { CardTitle, CardText, CardActions } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
@@ -69,43 +70,45 @@ export class ReviewForm extends Component {
     const { values } = this.state;
 
     return (
-      <ValidatorForm onSubmit={ this.handleSubmit } autoComplete={ false }>
-        <CardTitle title='Add a Review' subtitle='Share your thoughts about this product' />
-        <CardText>
-          <StarsControl
-            ref={ (element) => this.stars = element }
-            stars={ values.stars }
-            containerStyle={ styles.stars }
-            onChange={ (e) => this.handleChange(e, 'stars') }
-            autoComplete={ false }
-          />
-          <TextValidator
-            floatingLabelText='Title'
-            hintText='Title'
-            name='title'
-            value={ values.title }
-            onChange={ (e) => this.handleChange(e, 'title') }
-            validators={['required']}
-            errorMessages={['This field is required']}
-            fullWidth={ true }
-          />
-          <TextValidator
-            floatingLabelText='Your Comments'
-            hintText='Your Comments'
-            name='comments'
-            value={ values.comments }
-            onChange={ (e) => this.handleChange(e, 'comments') }
-            validators={['required']}
-            errorMessages={['This field is required']}
-            fullWidth={ true }
-            multiLine={ true }
-            rowsMax={ 4 }
-          />
-        </CardText>
-        <CardActions>
-          <RaisedButton type='submit' label='Submit Review' primary={ true } />
-        </CardActions>
-      </ValidatorForm>
+      <Paper style={ styles.root }>
+        <ValidatorForm onSubmit={ this.handleSubmit } autoComplete={ false }>
+          <CardTitle title='Add a Review' subtitle='Share your thoughts about this product' />
+          <CardText>
+            <StarsControl
+              ref={ (element) => this.stars = element }
+              stars={ values.stars }
+              containerStyle={ styles.stars }
+              onChange={ (e) => this.handleChange(e, 'stars') }
+              autoComplete={ false }
+            />
+            <TextValidator
+              floatingLabelText='Title'
+              hintText='Title'
+              name='title'
+              value={ values.title }
+              onChange={ (e) => this.handleChange(e, 'title') }
+              validators={['required']}
+              errorMessages={['This field is required']}
+              fullWidth={ true }
+            />
+            <TextValidator
+              floatingLabelText='Your Comments'
+              hintText='Your Comments'
+              name='comments'
+              value={ values.comments }
+              onChange={ (e) => this.handleChange(e, 'comments') }
+              validators={['required']}
+              errorMessages={['This field is required']}
+              fullWidth={ true }
+              multiLine={ true }
+              rowsMax={ 4 }
+            />
+          </CardText>
+          <CardActions>
+            <RaisedButton type='submit' label='Submit Review' primary={ true } />
+          </CardActions>
+        </ValidatorForm>
+      </Paper>
     );
 
   }
