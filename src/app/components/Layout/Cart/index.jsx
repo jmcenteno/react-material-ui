@@ -94,6 +94,7 @@ export class Cart extends Component {
                         }
                         leftAvatar={ <Avatar src={ product.get('pictures').get(0) } /> }
                         rightIconButton={ removeButton }
+                        style={ { textTransform: 'capitalize' } }
                       />
                     );
 
