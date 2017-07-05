@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
-import FontIcon from 'material-ui/FontIcon';
 import Subheader from 'material-ui/Subheader';
 import RemoveCircleIcon from 'material-ui/svg-icons/content/remove-circle';
 import AddCircleIcon from 'material-ui/svg-icons/content/add-circle';
@@ -22,7 +21,7 @@ export default class NumericStepper extends Component {
   static defaultProps = {
     defaultValue: 1,
     min: 1,
-    max: 10,
+    max: 99,
     label: 'Qty',
     style: null,
     onChange: () => {}

@@ -8,7 +8,7 @@ const styles = {
     paddingLeft: 0
   },
   qty: {
-    maxWidth: 50,
+    minWidth: 24,
     height: 48,
     lineHeight: '48px',
     textAlign: 'center'
