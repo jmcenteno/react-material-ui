@@ -1,13 +1,15 @@
-import { Map, List } from 'immutable';
+import { Map, List, fromJS } from 'immutable';
+import store from 'store2';
 
 import {
   CART_GET_ITEMS,
-  CART_ADD_ITEM,
-  CART_REMOVE_ITEM
+  CART_UPDATE
 } from '../actions/cart';
 
+const cart = store.namespace('cart');
+
 const initialState = Map({
-  items: List()
+  items: List(fromJS(cart.session('items')))
 });
 
 const actionsMap = {
@@ -18,13 +20,7 @@ const actionsMap = {
     });
   },
 
-  [CART_ADD_ITEM]: (state, action) => {
-    return state.merge({
-      items: action.data
-    });
-  },
-
-  [CART_REMOVE_ITEM]: (state, action) => {
+  [CART_UPDATE]: (state, action) => {
     return state.merge({
       items: action.data
     });

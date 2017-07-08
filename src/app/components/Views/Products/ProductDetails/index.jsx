@@ -128,7 +128,8 @@ export class ProductDetails extends Component {
                 ref={ (control) => this.qtyControl = control }
                 label='Qty'
                 defaultValue={ 1 }
-                style={ styles.numericStepper } />
+                style={ styles.numericStepper }
+              />
             </div>
             <RaisedButton
               label='Add to Cart'
