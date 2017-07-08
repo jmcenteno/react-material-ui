@@ -30,8 +30,7 @@ export default class MainMenu extends Component {
         <Menu onChange={ onRequestChange }>
           <MenuItem
             value='dashboard'
-            containerElement={ <Link to='/' /> }
-            leftIcon={ <HomeIcon /> }>
+            containerElement={ <Link to='/' /> }>
             Home
           </MenuItem>
           <MenuItem
@@ -43,7 +42,7 @@ export default class MainMenu extends Component {
           {
             categories.map((item, i) => (
               <MenuItem
-                key={ i }
+                key={ `category-${ i + 1 }` }
                 value={ item.get('id') }
                 containerElement={ <Link to={ `/products/${ item.get('id') }` } /> }>
                 { item.get('name') }
